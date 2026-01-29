@@ -1,0 +1,58 @@
+@media (max-width: 900px) {
+    .main-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        padding: 1.5rem;
+        flex-direction: row;
+        align-items: center;
+        border-right: none;
+        border-bottom: 1px solid #333;
+    }
+
+    .footer-meta {
+        display: none;
+    }
+
+    .nav-menu {
+        flex-direction: row;
+        gap: 1rem;
+        overflow-x: auto;
+    }
+
+    .nav-item span {
+        display: none;
+    }
+
+    .content-section {
+        padding: 4rem 1.5rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .masonry-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .landscape {
+        grid-column: span 1;
+        height: 250px;
+    }
+
+    .portrait {
+        height: 350px;
+    }
+}
