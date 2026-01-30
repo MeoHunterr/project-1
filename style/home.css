@@ -124,6 +124,10 @@ body {
   animation-delay: 0.45s;
 }
 
+.static-box:hover {
+  box-shadow: 0 0 0 3px rgb(252, 163, 17);
+}
+
 .num {
   color: #FCA311;
   font-weight: bold;
@@ -183,4 +187,8 @@ body {
   0% {color: rgb(170, 170, 170);}
   80% {color: rgb(170, 170, 170);}
   100% {color: rgb(252, 163, 17);}
+}
+
+.section-1 {
+  display: none;
 }
