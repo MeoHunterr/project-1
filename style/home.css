@@ -48,8 +48,6 @@ body {
   padding: 15px 10px;
 }
 
-
-
 .btn:not(.active) {
   scale: 0.9;
 }
@@ -204,14 +202,14 @@ body {
 }
 
 @keyframes highlight {
-  0%, 85% {
+  from {
     background-color: transparent;
     font-size: 16px;
     color: rgb(170, 170, 170);
     padding: 0px;
     box-shadow: none;
   }
-  100% {
+  to {
     background-color: rgba(241, 250, 238, 0.7);
     font-size: 20px;
     color: rgb(36, 36, 36);
@@ -235,12 +233,126 @@ body {
 
 .active-nd {
   background-color: rgba(241, 250, 238, 0.7);
-  font-size: 20px;
-  color: rgb(36, 36, 36);
+  font-size: 20px !important;
+  color: rgb(36, 36, 36) !important;
   padding: 20px;
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.15);
 }
 
 .section-2, .section-3, .section-4 {
   display: none;
+}
+
+.th-con {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 17px;
+}
+
+.img-con {
+  position: absolute;
+  z-index: 100;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 15%;
+  display: none;
+}
+
+.view-point {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  overflow: hidden;
+}
+
+.slider {
+  position: absolute;
+  display: flex;
+}
+
+.avd {
+  border-radius: 12px;
+  width: 400px;
+  height: 400px;
+}
+
+.text {
+  color: rgb(170, 170, 170);
+  font-size: 16px;
+  margin-top: 80px;
+  border-radius: 12px;
+}
+
+.container {
+  display: grid;
+  gap: 20px;  
+}
+
+.con-1 {
+  grid-template-columns: 2fr 1fr;
+}
+
+.con-2 {
+  grid-template-columns: 1fr 2fr;
+}
+
+.date {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  opacity: 0;
+}
+
+.date span {
+  color: #f1faee;
+  margin: 1px;
+}
+
+.p1 {
+  color: #e63946;
+  margin: 1px;
+}
+
+.p2 {
+  color: #a8dadc;
+  margin: 1px;
+}
+
+.pic {
+  position: absolute;
+  transform: translateY(-50%);
+  width: 300px;
+  height: 300px;
+  border-radius: 12px;
+}
+
+.france {
+  top: 40%;
+  right: 25%;
+}
+
+.usa {
+  top: 65%;
+  right: 10%;
+}
+
+.s3Pic {
+  display: none;
+}
+
+.active-pic {
+  scale: 1.1;
+  filter: brightness(100%);
+  z-index: 6000;
+}
+
+.non-active-pic {
+  scale: 0.9;
+  filter: brightness(50%);
+  z-index: 5000;
 }
