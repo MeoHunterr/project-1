@@ -1,25 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
 
 :root {
-  --bg-color: #0d0d0d;
-  --panel-bg: rgba(26, 26, 26, 0.7);
+  --bg-color: #000000;
+  --panel-bg: #000000;
+  /* Matte black/dark grey matching reference */
   --primary-color: #FCA311;
-  --text-light: #f1faee;
+  --text-light: #ffffff;
   --text-dim: #888888;
-  --accent-red: #E63946;
+  --accent-red: #D90429;
   --accent-blue: #A8DADC;
-  --transition-speed: 0.6s;
-  --sidebar-width: 260px;
+  --transition-speed: 0.4s;
+  --sidebar-width: 250px;
 }
 
 body {
   margin: 0;
   padding: 0;
   background-color: var(--bg-color);
-  background-image:
-    radial-gradient(at 0% 0%, hsla(253, 16%, 10%, 1) 0, transparent 50%),
-    radial-gradient(at 50% 0%, hsla(225, 39%, 12%, 1) 0, transparent 50%),
-    radial-gradient(at 100% 0%, hsla(339, 49%, 12%, 1) 0, transparent 50%);
   font-family: 'Montserrat', sans-serif;
   overflow: hidden;
   height: 100vh;
@@ -34,12 +31,19 @@ body {
   width: 100%;
   height: 100%;
   z-index: -1;
-  opacity: 0.4;
-  filter: blur(80px);
+  opacity: 0;
   pointer-events: none;
-  background: radial-gradient(circle at 50% 50%, rgba(252, 163, 17, 0.05), transparent 70%);
 }
 
+#three-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  pointer-events: none;
+}
 
 img {
   max-width: 100%;
@@ -60,14 +64,14 @@ img {
 }
 
 .side-bar {
-  background-color: var(--panel-bg);
+  background-color: #181818 !important;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   padding: 30px;
   height: 100%;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.03);
   z-index: 100;
 }
 
@@ -110,10 +114,10 @@ img {
 
 .btn.active {
   background-color: var(--primary-color);
-  color: var(--bg-color);
+  color: #fff;
   font-weight: 700;
-  box-shadow: 0 5px 20px rgba(252, 163, 17, 0.4);
-  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(252, 163, 17, 0.5);
+  transform: translateX(10px);
 }
 
 .video-bg {
@@ -124,8 +128,8 @@ img {
   height: 100%;
   z-index: -2;
   overflow: hidden;
-  opacity: 0.15;
-  transition: opacity 1s ease;
+  opacity: 0;
+  display: none !important;
 }
 
 .video-bg video {
@@ -135,8 +139,7 @@ img {
 }
 
 .content {
-  background-color: var(--panel-bg);
-  backdrop-filter: blur(20px);
+  background-color: #181818 !important;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
@@ -144,8 +147,8 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 
@@ -189,22 +192,30 @@ img {
   padding-right: 0;
 }
 
-.title h1 {
-  font-size: clamp(2.5rem, 5vw, 5.5rem);
-  line-height: 1;
-  margin: 0;
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hero-title .line {
   font-weight: 900;
-  letter-spacing: -2px;
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
 }
 
-.title h1:first-child {
-  color: var(--text-light);
-  text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+.hero-title .line.white {
+  color: #ffffff;
 }
 
-.title h1:last-child {
-  color: var(--text-dim);
-  opacity: 0.5;
+.hero-title .line.gray {
+  color: #888888;
+}
+
+.hero-title .line.red {
+  color: #D90429;
 }
 
 .text-box {
