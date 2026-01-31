@@ -345,13 +345,13 @@ body {
   display: none;
 }
 
-.active-pic {
+.focus {
   scale: 1.1;
   filter: brightness(100%);
   z-index: 6000;
 }
 
-.non-active-pic {
+.blur {
   scale: 0.9;
   filter: brightness(50%);
   z-index: 5000;
