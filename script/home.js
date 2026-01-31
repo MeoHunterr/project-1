@@ -6,7 +6,7 @@ const timelineItems = document.querySelectorAll('.timeline-item');
 const s2Descriptions = document.querySelectorAll('.nd');
 const s2Slider = document.querySelector('.slider');
 const timelineImages = document.querySelectorAll('.s3Pic .pic');
-const SECTION_IDS = ['s1', 's2', 's3', 's4'];
+const bgMesh = document.querySelector('.bg-mesh');
 
 let currentSectionIndex = 0;
 let s2SubIndex = 0;
@@ -16,16 +16,29 @@ let s3SubIndex = 0;
 
 function animateSectionIn(index) {
   const section = sections[index];
-  const elements = section.querySelectorAll('.title, .text-box, .static-box, .description, .timeline-container, .visual-content');
+  const elements = section.querySelectorAll('.title h1, .text-box, .static-box, .description, .timeline-item, .visual-content');
+  const video = section.querySelector('.video-bg');
 
   gsap.fromTo(elements,
-    { opacity: 0, y: 50, filter: 'blur(10px)' },
-    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.8, stagger: 0.1, ease: 'power3.out' }
+    { opacity: 0, y: 30, filter: 'blur(15px)' },
+    { opacity: 1, y: 0, filter: 'blur(0px)', duration: 1, stagger: 0.15, ease: 'expo.out' }
   );
 
-  if (index === 0) {
-    gsap.fromTo('.icon', { rotate: 0 }, { rotate: 360, duration: 20, repeat: -1, ease: 'linear' });
+  if (video) {
+    gsap.fromTo(video, { opacity: 0 }, { opacity: 0.15, duration: 2 });
   }
+  const colors = [
+    'radial-gradient(at 0% 0%, hsla(253,16%,15%,1) 0, transparent 50%)',
+    'radial-gradient(at 100% 0%, hsla(225,39%,15%,1) 0, transparent 50%)',
+    'radial-gradient(at 50% 100%, hsla(339,49%,15%,1) 0, transparent 50%)',
+    'radial-gradient(at 0% 100%, hsla(200,30%,15%,1) 0, transparent 50%)'
+  ];
+
+  gsap.to(bgMesh, {
+    backgroundImage: colors[index % colors.length],
+    duration: 2,
+    ease: 'power2.inOut'
+  });
 }
 
 function updateSectionDisplay() {
@@ -33,7 +46,6 @@ function updateSectionDisplay() {
     if (index === currentSectionIndex) {
       sec.style.display = 'grid';
       sec.classList.add('active-section');
-      // Trigger entrance animation
       animateSectionIn(index);
     } else {
       sec.style.display = 'none';
@@ -58,46 +70,44 @@ function handleSection2Nav(index) {
   s2Descriptions.forEach((item, i) => {
     if (i === s2SubIndex) {
       item.classList.add('active-nd');
-      gsap.to(item, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.4 });
+      gsap.to(item, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.5, borderLeftWidth: '8px' });
     } else {
       item.classList.remove('active-nd');
-      gsap.to(item, { opacity: 0.4, scale: 0.95, filter: 'blur(2px)', duration: 0.4 });
+      gsap.to(item, { opacity: 0.3, scale: 0.95, filter: 'blur(4px)', duration: 0.5, borderLeftWidth: '4px' });
     }
   });
 
   const translateValue = -(s2SubIndex * 100);
-  gsap.to(s2Slider, { xPercent: translateValue, duration: 0.6, ease: 'power2.inOut' });
+  gsap.to(s2Slider, { xPercent: translateValue, duration: 0.8, ease: 'expo.inOut' });
 }
 
 function handleSection3Nav(index) {
   s3SubIndex = index;
-  // Ensure we stay within bounds (0 or 1)
   if (s3SubIndex < 0) s3SubIndex = 0;
   if (s3SubIndex > 1) s3SubIndex = 1;
 
   timelineItems.forEach((item, i) => {
     if (i === s3SubIndex) {
       item.classList.add('active-timeline');
-      gsap.to(item, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.5 });
+      gsap.to(item, { opacity: 1, scale: 1, filter: 'blur(0px)', duration: 0.6, x: 20 });
     } else {
       item.classList.remove('active-timeline');
-      gsap.to(item, { opacity: 0.3, scale: 0.95, filter: 'blur(3px)', duration: 0.5 });
+      gsap.to(item, { opacity: 0.2, scale: 0.9, filter: 'blur(6px)', duration: 0.6, x: 0 });
     }
   });
 
   const francePic = document.querySelector('.pic.france');
   const usaPic = document.querySelector('.pic.usa');
 
+  const tl = gsap.timeline();
   if (s3SubIndex === 0) {
-    gsap.to(francePic, { opacity: 1, scale: 1, zIndex: 10, filter: 'blur(0px) brightness(1)', duration: 0.6 });
-    gsap.to(usaPic, { opacity: 0.3, scale: 0.8, zIndex: 1, filter: 'blur(5px) brightness(0.4)', duration: 0.6 });
+    tl.to(francePic, { opacity: 1, scale: 1.1, zIndex: 10, filter: 'blur(0px) brightness(1.2)', xPercent: 0, duration: 0.7, ease: 'back.out(1.7)' })
+      .to(usaPic, { opacity: 0.2, scale: 0.8, zIndex: 1, filter: 'blur(10px) brightness(0.3)', xPercent: 20, duration: 0.7, ease: 'power2.inOut' }, 0);
   } else {
-    gsap.to(francePic, { opacity: 0.3, scale: 0.8, zIndex: 1, filter: 'blur(5px) brightness(0.4)', duration: 0.6 });
-    gsap.to(usaPic, { opacity: 1, scale: 1, zIndex: 10, filter: 'blur(0px) brightness(1)', duration: 0.6 });
+    tl.to(francePic, { opacity: 0.2, scale: 0.8, zIndex: 1, filter: 'blur(10px) brightness(0.3)', xPercent: -20, duration: 0.7, ease: 'power2.inOut' })
+      .to(usaPic, { opacity: 1, scale: 1.1, zIndex: 10, filter: 'blur(0px) brightness(1.2)', xPercent: 0, duration: 0.7, ease: 'back.out(1.7)' }, 0);
   }
 }
-
-/* --- Input Handling --- */
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowDown') {
@@ -119,27 +129,16 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-/* Click Handlers for Interactive Focus */
-
-// Section 2: Click on text to navigate
 s2Descriptions.forEach((desc, index) => {
-  desc.addEventListener('click', () => {
-    handleSection2Nav(index);
-  });
+  desc.addEventListener('click', () => handleSection2Nav(index));
 });
 
-// Section 3: Click on timeline text items
 timelineItems.forEach((item, index) => {
-  item.addEventListener('click', () => {
-    handleSection3Nav(index);
-  });
+  item.addEventListener('click', () => handleSection3Nav(index));
 });
 
-// Section 3: Click on images
 timelineImages.forEach((img, index) => {
-  img.addEventListener('click', () => {
-    handleSection3Nav(index);
-  });
+  img.addEventListener('click', () => handleSection3Nav(index));
 });
 
 buttons.forEach((btn, index) => {
@@ -149,7 +148,12 @@ buttons.forEach((btn, index) => {
   });
 });
 
-// Init
+window.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 0.5) * 20;
+  gsap.to('.visual-content img', { x: x, y: y, duration: 1, ease: 'power1.out' });
+});
+
 updateSectionDisplay();
 handleSection3Nav(0);
 handleSection2Nav(0);
