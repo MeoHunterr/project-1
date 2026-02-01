@@ -61,6 +61,7 @@ body {
   color: rgb(36, 36, 36);
   scale: 1.1;
   transform: translateX(10px);
+
 }
 
 .btn.active:hover {
@@ -357,4 +358,17 @@ h1 {
   scale: 0.9;
   filter: brightness(50%) blur(3px);
   z-index: 5000;
+}
+
+.app {
+  display: none;
+}
+
+.section-4 {
+  height: 100%;
+  width: 100%;
+  display: flex !important;
+  top: 0%;
+  right: -15%;
+  position: absolute;
 }

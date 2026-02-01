@@ -10,6 +10,7 @@ const s1 = document.querySelector('.section.section-1');
 const s2 = document.querySelector('.section.section-2');
 const s3 = document.querySelector('.section.section-3');
 const s4 = document.querySelector('.section.section-4');
+const map = document.querySelector('.app');
 
 const sliderImg = document.querySelector('.slider');
 const imgCon = document.querySelector('.img-con');
@@ -34,6 +35,7 @@ function switchSlide() {
       s2.style.display = 'none';
       s3.style.display = 'none';
       s4.style.display = 'none';
+      map.style.display = 'none';
       imgCon.style.display = 'none';
       s3Pic.style.display = 'none';
       break;
@@ -45,6 +47,7 @@ function switchSlide() {
       s1.style.display = 'none';
       s3.style.display = 'none';
       s4.style.display = 'none';
+      map.style.display = 'none';
       s3Pic.style.display = 'none';
       break;
 
@@ -54,12 +57,15 @@ function switchSlide() {
       s1.style.display = 'none';
       s2.style.display = 'none';
       s4.style.display = 'none';
+      map.style.display = 'none';
       imgCon.style.display = 'none';
       s3Pic.style.display = 'flex';
       break;
 
     case 's4':
-      s4.style.display = 'grid';
+      s4.style.display = 'flex';
+      s4.style.pointerEvents = 'all';
+      map.style.display = 'flex'; 
 
       s1.style.display = 'none';
       s2.style.display = 'none';
