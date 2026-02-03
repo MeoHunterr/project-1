@@ -2,373 +2,54 @@ body {
   background-color: rgb(36, 36, 36);
   font-family: Circular, -apple-system, BlinkMacSystemFont, 'Segoe UI', 
              'Helvetica Neue', Arial, sans-serif;
+  overflow: hidden;
 }
 
 * {
   transition: all 0.3s;
 }
 
-.side-bar, .navigator {
-  display: flex;
-  flex-direction: column;
+.vid-bg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -100;
 }
 
-.side-bar {
-  position: fixed;
-  left: 10px;
-  top: 10px;
-  bottom: 10px;
-  background-color: rgb(44, 44, 44);
-  border-radius: 12px;
-  padding: 20px;
-  align-items: flex-start;
-  justify-content: center;
-}
-
-.icon {
-  z-index: 10;
-  position: fixed;
-  left: 54px;
-  top: 40px;
-  animation: rotate 10s linear infinite;
-}
-
-.navigator {
-  gap: 20px;
-}
-
-.btn {
-  outline: none;
-  border: none;
-  border-radius: 12px;
-  background-color: transparent;
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   color: #f1faee;
-  font-size: 20px;
-  cursor: pointer;
-  padding: 15px 10px;
-}
-
-.btn:not(.active) {
-  scale: 0.9;
-}
-
-.btn:hover:not(.active) {
-  background-color: rgba(241, 250, 238, 0.2);
-}
-
-.btn.active {
-  background-color: #FCA311;
-  color: rgb(36, 36, 36);
-  scale: 1.1;
-  transform: translateX(10px);
-
-}
-
-.btn.active:hover {
-  background-color: #FCA311;
-  color: rgb(36, 36, 36);
-  scale: 1.1
+  background-color: rgba(36, 36, 36, 0.7);
+  padding: 100px 50px;
+  border-radius: 22px;
+  font-size: 50px;
+  width: 1300px;
 }
 
 .content {
-  position: fixed;
-  right: 10px;
-  left: 230px;
-  top: 10px;
-  bottom: 10px;
-  background-color: rgb(44, 44, 44);
-  border-radius: 12px;
-  padding: 80px 40px;
-}
-
-h1 {
-  line-height: 1;
-  font-size: 70px !important;
-  margin: 0;
-}
-
-.text-box {
-  width: 600px;
-  color:  rgb(170, 170, 170);
-  margin-top: 50px;
-  margin-bottom: 100px;
-  font-size: 20px;
-}
-
-.static {
-  display: grid;
-  grid-template-columns: 350px 350px;
-  gap: 20px;
-}
-
-.static-box {
   background-color: rgb(36, 36, 36);
-  height: 170px;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  animation: glow 2s;
-}
-
-.sb2 {
-  animation-delay: 0.15s;
-}
-
-.sb3 {
-  animation-delay: 0.3s;
-}
-
-.sb4 {
-  animation-delay: 0.45s;
-}
-
-.static-box:hover {
-  box-shadow: 0 0 0 3px rgb(252, 163, 17);
-}
-
-.num {
-  color: #FCA311;
-  font-weight: bold;
-  font-size: 35px;
-  margin: 0;
-  margin-bottom: 20px;
-  animation: appear 3s;
-}
-
-.name {
-  color:  rgb(170, 170, 170);
-  margin-bottom: 0;
-  font-size: 16px;
-}
-
-.section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.map-container {
-  display: flex;
-  justify-content: center;
-  height: 770px;
-}
-
-.show-name {
-  color: #f1faee;
-  position: fixed;
-  font-size: 25px;
-  transform: rotate(90deg);
-  top: 42%;
-  right: -17%;
-  z-index: 100;
-}
-
-.bar {
-  position: fixed;
-  width: 2px;
-  top: 100px;
-  bottom: 100px;
-  border-radius: 1px;
-  right: 4%;
-  background-color: #f1faee;
-  z-index: 100;
-}
-
-@keyframes rotate {
-  from {transform: rotate(0);}
-  to {transform: rotate(360deg);}
-}
-
-@keyframes glow {
-  0%, 100% {box-shadow: none;}
-  50% { box-shadow: 0 0 0 3px rgb(252, 163, 17);}
-}
-
-@keyframes appear {
-  0%, 85% {color: rgb(170, 170, 170);}
-  100% {color: rgb(252, 163, 17);}
-}
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
-}
-
-@keyframes fadeOut {
-  from {opacity: 1;}
-  to {opacity: 0;}
-}
-
-.description {
-  display: flex;
-  color: rgb(170, 170, 170);
-  margin-top: 80px;
-  margin-bottom: 100px;
-  flex-direction: column;
-  gap: 80px;
-  height: 80%;
-  width: 750px;
-  font-size: 16px;
-}
-
-.nd {border-radius: 12px;}
-
-.active-nd {
-  background-color: rgb(36, 36, 36);
-  scale: 1.15;
-  color: #f1faee;
-  padding: 20px;
-  box-shadow: -10px 0 0 #FCA311;
-  transform: translateX(64px);
-}
-
-.not-active-nd {
-  filter: blur(3px);
-  pointer-events: none;
-}
-
-.active-des {
-  scale: 1.2;
-  color: #f1faee;
-  padding: 20px;
-  transform: translateX(23px);
-}
-
-.active-des2 {
-  scale: 1.2;
-  color: #f1faee;
-  padding: 20px;
-}
-
-.section-2, .section-3, .section-4 {
-  display: none;
-}
-
-.th-con {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-left: 17px;
-}
-
-.img-con {
-  position: absolute;
-  z-index: 100;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 5%;
-  display: none;
-}
-
-.view-point {
-  position: relative;
-  width: 600px;
-  height: 500px;
-  overflow: hidden;
-}
-
-.slider {
-  position: absolute;
-  display: flex;
-  transition: all 0.3s ease-in-out;
-}
-
-.avd {
-  border-radius: 12px;
-  width: 600px;
-  height: 500px;
-}
-
-.text {
-  font-size: 16px;
-  margin-top: 80px;
-  border-radius: 12px;
-}
-
-.container {
-  display: grid;
-  gap: 20px;  
-  color: rgb(170, 170, 170);
-}
-
-.con-1 {
-  grid-template-columns: 2fr 1fr;
-}
-
-.con-2 {
-  grid-template-columns: 1fr 2fr;
-}
-
-.date {
-  margin-top: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-size: 30px;
-  opacity: 0;
-}
-
-.date span {
-  color: #f1faee;
-  margin: 1px;
-}
-
-.p1 {
-  color: #e63946;
-  margin: 1px;
-}
-
-.p2 {
-  color: #a8dadc;
-  margin: 1px;
-}
-
-.pic {
-  position: absolute;
-  transform: translateY(-50%);
-  width: 300px;
-  height: 300px;
-  border-radius: 12px;
-}
-
-.france {
-  top: 40%;
-  right: 25%;
-}
-
-.usa {
-  top: 65%;
-  right: 10%;
-}
-
-.s3Pic {
-  display: none;
-}
-
-.focus {
-  scale: 1.5;
-  filter: brightness(100%);
-  z-index: 6000;
-}
-
-.blur {
-  scale: 0.9;
-  filter: brightness(50%) blur(3px);
-  z-index: 5000;
-}
-
-.app {
-  display: none;
-}
-
-.section-4 {
-  height: 100%;
   width: 100%;
-  display: flex !important;
-  top: 0%;
-  right: -15%;
+  height: 110%;
+  z-index: 1;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: none;
+  display: none;
+}
+
+
+@keyframes slideOut {
+  from {transform: translate(-50%, -50%);}
+  to {transform: translate(-50%, 50%);}
+}
+
+@keyframes slideIn {
+  from {transform: translate(-50%, 50%);}
+  to {transform: translate(-50%, -50%);}
 }
