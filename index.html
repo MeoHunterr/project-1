@@ -4,16 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#000000">
   <title>Khát Vọng Non Sông</title>
   <link rel="stylesheet" href="style/home.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
 
   <!-- Video Background (Fixed) -->
   <div class="vid-bg">
-    <video autoplay loop muted playsinline>
+    <video autoplay loop muted playsinline preload="metadata">
       <source src="video/explain.mp4" type="video/mp4">
     </video>
   </div>
@@ -125,7 +125,7 @@
     </div>
   </div>
 
-  <script src="script/home.js"></script>
+  <script src="script/home.js" defer></script>
 </body>
 
 </html>

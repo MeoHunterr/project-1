@@ -29,9 +29,28 @@ body::before {
   display: none;
 }
 
-* {
+/* Optimized: Only apply transitions to elements that need them */
+.toc-item,
+.toc-number,
+.toc-label,
+.container,
+.section,
+.content {
   transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
   box-sizing: border-box;
+}
+
+/* Performance: Hint browser about changes */
+.view-point {
+  will-change: transform;
+}
+
+.toc-item:hover .toc-number,
+.toc-item:hover .toc-label {
+  will-change: transform, opacity;
 }
 
 .vid-bg {
@@ -133,7 +152,10 @@ body::before {
   position: relative;
   display: flex;
   align-items: center;
-  background: #0c0c0c;
+  background: transparent;
+  background-color: rgba(12, 12, 12, 0.9);
+  contain: layout style paint;
+  /* Performance: isolate layout calculations */
 }
 
 /* Section Backdrops */
@@ -184,11 +206,8 @@ body::before {
   justify-content: center;
   padding-left: 50px;
   z-index: 2000;
-
-  /* Unified Look: Gradient instead of solid block */
   background: linear-gradient(to right, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 60%, transparent 100%);
   backdrop-filter: none;
-  /* Removed blur to let video show through clearly */
 }
 
 .toc-sidebar ul {
@@ -231,7 +250,6 @@ body::before {
 .toc-item:hover .toc-number,
 .toc-item.active .toc-number {
   color: #d4af37;
-  /* Gold highlight */
 }
 
 .toc-item:hover .toc-label,
@@ -246,11 +264,9 @@ body::before {
   text-underline-offset: 8px;
 }
 
-/* --- Container: Slide Content --- */
 .container {
   max-width: 900px;
   margin-left: 380px;
-  /* Clearly separated from 300px sidebar + 80px gap */
   padding: 60px;
   height: 100vh;
   display: flex;
@@ -261,7 +277,6 @@ body::before {
 
 .content h1 {
   font-size: 3rem;
-  /* Elegant magazine size */
   margin-bottom: 25px;
   color: #fff;
   font-weight: 800;
@@ -277,7 +292,6 @@ body::before {
   font-size: 1.2rem;
   margin-top: 30px;
   color: #d4af37;
-  /* Gold accent */
   text-transform: uppercase;
   letter-spacing: 2px;
   opacity: 0;
@@ -291,7 +305,6 @@ body::before {
   color: #ccc;
   font-weight: 400;
   line-height: 1.6;
-  /* Breathing room */
   max-width: 650px;
   opacity: 0;
   transform: translateY(20px);
@@ -347,7 +360,6 @@ body::before {
   pointer-events: none;
 }
 
-/* Animations */
 @keyframes reveal {
   to {
     opacity: 1;
@@ -387,7 +399,7 @@ body::before {
 /* Tablet Layout (768px - 1023px) */
 @media screen and (max-width: 1023px) and (min-width: 768px) {
 
-  /* Reduce TOC width */
+
   .toc-sidebar {
     width: 200px;
     padding-left: 30px;
