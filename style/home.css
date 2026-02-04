@@ -73,7 +73,6 @@ body::before {
   height: auto;
   object-fit: cover;
   opacity: 0.6;
-  filter: grayscale(100%) contrast(1.1);
 }
 
 .title {
@@ -298,7 +297,6 @@ body::before {
   transform: translateY(20px);
 }
 
-.content h3,
 .main-text,
 .content p {
   font-size: 1.3rem;
@@ -361,6 +359,7 @@ body::before {
 }
 
 @keyframes reveal {
+  from {opacity: 0; transform: translateY(20px);}
   to {
     opacity: 1;
     transform: translate(0);
@@ -432,7 +431,6 @@ body::before {
     margin-top: 20px;
   }
 
-  .content h3,
   .main-text,
   .content p {
     font-size: 1.15rem;
@@ -485,7 +483,6 @@ body::before {
     margin-top: 15px;
   }
 
-  .content h3,
   .main-text,
   .content p {
     font-size: 1rem;
@@ -529,4 +526,189 @@ body::before {
     min-width: 100%;
     min-height: 100%;
   }
+}
+
+.section {
+  position: relative;
+}
+
+.content img {
+  border-radius: 12px;
+  position: absolute;
+}
+
+.xoc {
+  position: absolute;
+  width: 400px;
+  right: 17%;
+  top: 20%;
+}
+
+.lb {
+  width: 400px;
+  right: 17%;
+  bottom: 15%;
+}
+
+.cope {
+  width: 400px;
+  right: 30%;
+  bottom: 25%;
+}
+
+.sub-sec {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  border-radius: 12px;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #1d1d1d;
+  display: none;
+}
+
+.sub1, .sub3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  display: none;
+}
+
+#tt {
+  color: #fff ;
+  font-size: 30px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.box {
+  width: 82%;
+}
+
+#des {
+  background-color: black;
+  padding: 20px;
+  box-shadow: -10px 0 0 #d4af37;
+  border-radius: 12px;
+  margin-top: 50px;
+  color: #d4af37;
+}
+
+#aura {
+  color: rgb(0, 255, 0);
+  font-weight: bold;
+  margin-bottom: 70px;
+  margin-left: 50px;
+  font-size: 20px;
+}
+
+.sub2 {
+  position: relative;
+  padding: 20px;
+  padding-left: 50px;
+  padding-top: 10px;
+  display: none;
+}
+
+.aura-png {
+  width: 200px;
+  position: absolute;
+  top: 3%;
+  right: 7%;
+}
+
+.gazing {
+  width: 230px;
+  position: absolute;
+  right: 15%;
+  bottom: 20.5%;
+}
+
+#hero {
+  margin-left: 30px;
+  color: #e63946;
+  font-weight: bold;
+}
+
+#ttt {
+  color: #fff ;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.active-content {
+  color: #ccc;
+  font-weight: bold;
+  color: black !important;
+  background-color: #ccc;
+}
+
+#l1, #l2, #l3 {
+  transition: all 0.7s;
+  margin: 20px 0;
+  border-radius: 12px;
+  padding: 10px;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+.et, .trump, .evo {
+  width: 400px;
+}
+
+.grid-con {
+  display: grid;
+  grid-template-columns: 400px 400px;
+  gap: 50px;
+}
+
+.trump {
+  position: absolute;
+  right: -110%;
+  bottom: -300%
+}
+
+.con {
+  position: relative;
+}
+
+.h3 {
+  margin-bottom: 0;
+  transform: translateY(20px);
+  opacity: 0;
+}
+
+img {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.section.active .h3, .section.active .cope,
+.section.active .evo,
+.section.active .aura-png,
+.section.active .xoc
+{
+  animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
+}
+
+.section.active .et, .section.active .gazing
+{
+  animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.75s;
+}
+
+.section.active .trump, .section.active .lb
+{
+  animation: reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 1s;
 }
